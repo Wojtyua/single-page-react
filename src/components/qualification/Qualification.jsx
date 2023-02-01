@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import './qualification.css';
 
 const Qualification = () => {
+  const [toggle, setToggle] = useState(1);
+  const toggleTab = i => {
+    setToggle(i);
+  };
   return (
     <section className="qualification section" id="qualification">
       <h2 className="section__title">Qualifications</h2>
@@ -8,18 +13,38 @@ const Qualification = () => {
 
       <div className="qualification__container container">
         <div className="qualification__tabs">
-          <div className="qualification__btn btn--flex qualification__active">
+          <div
+            className={
+              toggle === 1
+                ? 'qualification__btn btn--flex qualification__active'
+                : 'qualification__btn btn--flex'
+            }
+            onClick={() => toggleTab(1)}
+          >
             <i className="uil uil-graduation-cap qualification__icon"></i>
             Education
           </div>
 
-          <div className="qualification__btn btn--flex">
+          <div
+            className={
+              toggle === 2
+                ? 'qualification__btn btn--flex qualification__active'
+                : 'qualification__btn btn--flex'
+            }
+            onClick={() => toggleTab(2)}
+          >
             <i className="uil uil-briefcase-alt qualification__icon"></i>
             Experience
           </div>
         </div>
         <div className="qualification__sections">
-          <div className="qualification__content qualification__content-active">
+          <div
+            className={
+              toggle === 1
+                ? 'qualification__content qualification__content-active'
+                : 'qualification__content'
+            }
+          >
             <div className="qualification__data">
               <div>
                 <h3 className="qualification__title">Web Design</h3>
@@ -87,7 +112,13 @@ const Qualification = () => {
             </div>
           </div>
 
-          <div className="qualification__content">
+          <div
+            className={
+              toggle === 2
+                ? 'qualification__content qualification__content-active'
+                : 'qualification__content'
+            }
+          >
             <div className="qualification__data">
               <div>
                 <h3 className="qualification__title">Product Designer</h3>
